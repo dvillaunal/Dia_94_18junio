@@ -1,0 +1,41 @@
+[1] "Con esto nos Ahoramos el Hecho de manejar muchas bases de datos, varibles y vectores, es decir este archivo es ahorrarse varias lineas de codigo"
+[1] "# Miramos la suma de los items del vector:"
+[1] 480
+[1] "Ha habido en total 480 errores de predicción de un total de 1089 observaciones con las que cuenta el set de datos. Si calculamos la media, obtenemos la estimación del test error:"
+[1] "# test de error:"
+[1] 0.4407713
+[1] "LOOCV estima un test error del 44,07%, valor muy próximo al estimado por validación simple."
+null device 
+          1 
+[1] "# Valores Estandar:"
+[1] 5.890979 1.086596 1.102585 1.114772
+null device 
+          1 
+[1] "El resultado de la validación cruzada indica que un polinomio de grado 2 mejora sustancialmente el ajuste del modelo (test error = 1,08%), no superándose esta mejora con grados mayores de polinomio."
+[1] "Esto es de esperar ya que la relación entre x e y (dada por la ecuación inicial) es cuadrática. Además, con el summary del modelo podemos obtener la significancia estadística de los coeficientes para cada grado de polinomio mediante el ajuste por mínimos cuadrados."
+[1] "# significancia estadística de los coeficientes para cada grado de polinomio"
+
+Call:
+lm(formula = y ~ poly(x, 4), data = datos)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-2.8914 -0.5244  0.0749  0.5932  2.7796 
+
+Coefficients:
+            Estimate Std. Error t value Pr(>|t|)    
+(Intercept)  -1.8277     0.1041 -17.549   <2e-16 ***
+poly(x, 4)1   2.3164     1.0415   2.224   0.0285 *  
+poly(x, 4)2 -21.0586     1.0415 -20.220   <2e-16 ***
+poly(x, 4)3  -0.3048     1.0415  -0.293   0.7704    
+poly(x, 4)4  -0.4926     1.0415  -0.473   0.6373    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 1.041 on 95 degrees of freedom
+Multiple R-squared:  0.8134,	Adjusted R-squared:  0.8055 
+F-statistic: 103.5 on 4 and 95 DF,  p-value: < 2.2e-16
+
+[1] "Resulta significativo el ajuste hasta el grado de polinomio 2, con lo que las conclusiones coinciden."
+  |                                                                                     |                                                                             |   0%  |                                                                                     |......                                                                       |   8%  |                                                                                     |............                                                                 |  15%  |                                                                                     |..................                                                           |  23%  |                                                                                     |........................                                                     |  31%  |                                                                                     |..............................                                               |  38%  |                                                                                     |....................................                                         |  46%  |                                                                                     |.........................................                                    |  54%  |                                                                                     |...............................................                              |  62%  |                                                                                     |.....................................................                        |  69%  |                                                                                     |...........................................................                  |  77%  |                                                                                     |.................................................................            |  85%  |                                                                                     |.......................................................................      |  92%  |                                                                                     |.............................................................................| 100%
+[1] "main.r"

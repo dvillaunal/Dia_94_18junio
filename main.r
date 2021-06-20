@@ -133,4 +133,3 @@ print(summary(lm(y ~ poly(x, 4), data = datos)))
 # Conclusión:
 "Resulta significativo el ajuste hasta el grado de polinomio 2, con lo que las conclusiones coinciden."
 
-

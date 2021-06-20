@@ -1,26 +1,18 @@
-```{r, eval=FALSE, include=TRUE}
-"Protocolo:
- 
- 1. Daniel Felipe Villa Rengifo
- 
- 2. Lenguaje: R
- 
- 3. Tema: MÉTODOS DE REMUESTREO Y VALIDACIÓN DE MODELOS: VALIDACIÓN CRUZADA Y BOOTSTRAP [Parte 2]
- 
- 4. Fuentes:  
-    https://rpubs.com/rdelgado/405322
-    https://tereom.github.io/est-computacional-2018/bootstrap-en-r.html"
-```
+## ---- eval=FALSE, include=TRUE-------------------------------------------------------
+## "Protocolo:
+## 
+##  1. Daniel Felipe Villa Rengifo
+## 
+##  2. Lenguaje: R
+## 
+##  3. Tema: MÉTODOS DE REMUESTREO Y VALIDACIÓN DE MODELOS: VALIDACIÓN CRUZADA Y BOOTSTRAP [Parte 2]
+## 
+##  4. Fuentes:
+##     https://rpubs.com/rdelgado/405322
+##     https://tereom.github.io/est-computacional-2018/bootstrap-en-r.html"
 
-# Leave One Out Cross-Validation (LOOCV)
 
-Al igual que con la validación simple, LOOCV se puede emplear para estimar el test error y para determinar el grado óptimo de flexibilidad de un modelo
-
-## Estimación del test error
-
-Usando el ejemplo anterior, esta vez llevaremos a cabo el método LOOCV para estimar el test error. En este caso usamos `n–1` observaciones para entrenar el modelo en cada iteración (usando un `for`)
-
-```{r}
+## ------------------------------------------------------------------------------------
 # Guardamos los outputs:
 sink("OUTPUTS.txt")
 
@@ -72,21 +64,9 @@ mean(loocv.error)
 
 # Resultado:
 "LOOCV estima un test error del 44,07%, valor muy próximo al estimado por validación simple."
-```
 
 
-# Selección de flexibilidad del modelo
-
-La función `cv.glm()` del paquete `boot` puede emplearse para llevar a cabo LOOCV (si el argumento __K__ no se especifica) de cualquier modelo lineal generalizado creado mediante la función `glm()`.
-
-
-La función devuelve una lista con múltiples componentes. El vector delta es el que contiene el resultado de la validación cruzada (contiene dos valores, el primero es el estimador estándar y el segundo es la versión corregida por sesgo).
-
-
-Para este ejemplo usaremos un set de datos simulados con dos variables __(p = 2)__ y 100 observaciones __(n = 100)__, según la siguiente ecuación: `Y = 2x-(2x^2) + e`
-
-
-```{r}
+## ------------------------------------------------------------------------------------
 # Creamos una semilla:
 set.seed(1)
 
@@ -110,14 +90,9 @@ png(filename = "DispXY.png")
 plot(x, y)
 
 dev.off()
-```
-
-Al representar los datos podemos observar como la relación entre x e y no es lineal.
-
-Con lo cual, si quisiéramos ajustar un modelo, sería conveniente usar términos polinómicos de la variable `X`: En este caso, al llevar a cabo LOOCV no es necesario dividir los datos en grupos.
 
 
-```{r}
+## ------------------------------------------------------------------------------------
 # Cargamos la libreria:
 library(boot)
 library(ggplot2)
@@ -158,4 +133,4 @@ print(summary(lm(y ~ poly(x, 4), data = datos)))
 # Conclusión:
 "Resulta significativo el ajuste hasta el grado de polinomio 2, con lo que las conclusiones coinciden."
 
-```
+

@@ -1,3 +1,14 @@
+---
+title: "Dia_94_18junio"
+author: "Daniel Felipe Villa Rengifo"
+date: "19/6/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
 ```{r, eval=FALSE, include=TRUE}
 "Protocolo:
  
@@ -159,3 +170,14 @@ print(summary(lm(y ~ poly(x, 4), data = datos)))
 "Resulta significativo el ajuste hasta el grado de polinomio 2, con lo que las conclusiones coinciden."
 
 ```
+
+
+```{r}
+library(knitr)
+purl("Dia_94_18junio.Rmd", "main.r")
+```
+
+
+
+
+
